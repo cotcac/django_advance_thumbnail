@@ -33,7 +33,7 @@ class AdvanceThumbnailField(models.ImageField):
         try:
             with source_field.open() as source_file:
                 img = Image.open(source_file)
-                img.thumbnail(self.size)
+                img.thumbnail(self.size,Image.ANTIALIAS)
 
                 filename, extension = os.path.splitext(os.path.basename(source_field.name))
                 thumbnail_filename = f"{filename}_thumbnail{extension}"
